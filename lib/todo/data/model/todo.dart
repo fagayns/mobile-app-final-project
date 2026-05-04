@@ -1,14 +1,15 @@
 class Todo {
-  int? id;
-  String? todo;
-  bool? completed;
-  int? userId;
-  Todo({this.id, this.todo, this.completed, this.userId});
-  factory Todo.createFromJson(Map<String, dynamic> data) {
+  final int id;
+  final String title;
+  final bool completed;
+
+  Todo({required this.id, required this.title, required this.completed});
+
+  factory Todo.fromJson(Map<String, dynamic> json) {
     return Todo(
-        id: data['id'],
-        todo: data['todo'],
-        completed: data['completed'],
-        userId: data['userId']);
+      id: json['id'],
+      title: json['title'] ?? '',
+      completed: json['completed'] ?? false,
+    );
   }
 }
